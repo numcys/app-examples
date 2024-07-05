@@ -2,7 +2,7 @@ services:
   web:
     build: .
     command: node app.js
-    port: 5000
+    port: 3000
     scale:
       count: 1
       cpu: 128
@@ -24,5 +24,5 @@ balancers:
     - service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags=Service=web
     service: web
     ports:
-      80: 5000
+      80: 3000
 
