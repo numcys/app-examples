@@ -1,17 +1,19 @@
-environment:
-  - NODE_ENV=production
-  - PORT=3000
 services:
   web:
+    domain: ${HOST}
     build: .
     command: node app.js
-    port: 3000
-    scale:
-      count: 1
-      cpu: 128
-      memory: 256
+    port: 3001
+    environment:
+      - PORT=3001
     resources:
-      - mysql
+      - my-sql1
 resources:
-  mysql:
+  my-sql1:
     type: mysql
+    options:
+      version: "8.0"
+      class: "db.t3.medium"
+      storage: 50
+      encrypted: true
+      durable: true
