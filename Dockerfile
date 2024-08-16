@@ -1,9 +1,7 @@
-FROM node:14-alpine
+FROM node:10.16.3-alpine
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY . .
-
-EXPOSE 3000
+COPY . /usr/src/app
 
 CMD ["node", "app.js"]
