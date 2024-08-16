@@ -13,7 +13,7 @@ resources:
     type: mysql
     options:
       version: "8.0"
-      class: "db.t3.medium"
-      storage: 50
+      class: "db.t3.small"
+      storage: 5
       encrypted: true
       durable: true
