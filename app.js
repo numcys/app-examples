@@ -1,14 +1,12 @@
 const http = require('http');
+const port = process.env.PORT || 3000;
 
-const port = process.env.PORT
+const requestHandler = (req, res) => {
+  res.end('Hello, World!');
+};
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!\nI\'m: ' + process.env.APP + '\nBuild:' + process.env.BUILD + '\nRelease: ' + process.env.RELEASE + '\nrunning on: ' + process.env.RACK);
-  console.log('PING');
-});
+const server = http.createServer(requestHandler);
 
 server.listen(port, () => {
-  console.log(`Server running at ${port}/`);
+  console.log(`Server running at http://localhost:${port}`);
 });
