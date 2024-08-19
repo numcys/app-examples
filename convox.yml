@@ -7,13 +7,9 @@ services:
     environment:
       - PORT=3001
     resources:
-      - my-sql1
+      - db
 resources:
-  my-sql1:
-    type: mysql
+  db:
+    type: postgres
     options:
-      version: "8.0"
-      class: "db.t3.small"
-      storage: 5
-      encrypted: true
-      durable: true
+      version: 13
