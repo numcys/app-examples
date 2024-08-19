@@ -1,13 +1,18 @@
+environment:
+  - NODE_ENV=production
+  - PORT=3000
 services:
   web:
-    domain: ${HOST}
     build: .
     command: node app.js
-    port: 3001
-    environment:
-      - PORT=3001
+    port: 3000
+    scale:
+      count: 1
+      cpu: 128
+      memory: 256
     resources:
       - db
+
 resources:
   db:
     type: postgres
