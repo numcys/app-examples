@@ -14,6 +14,6 @@ resources:
     options:
       version: "8.0"
       class: "db.t3.small"
-      storage: 5
+      storage: 10
       encrypted: true
       durable: true
