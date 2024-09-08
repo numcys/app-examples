@@ -1,6 +1,6 @@
 services:
   web:
-    image: drupal
+    image: drupal:10-apache
     port: 80
     resources:
       - db1
