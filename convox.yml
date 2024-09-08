@@ -10,6 +10,6 @@ resources:
     options:
       storage: 10
       class: db.t3.large
-      version: 13
+      version: 16
 
 
