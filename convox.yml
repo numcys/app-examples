@@ -12,7 +12,7 @@ balancer:
     - test.annotation.org/value=foobar
     service: web
     ports:
-      80: 8080
+      3000: 8080
 resources:
   db1:
     type: postgres
