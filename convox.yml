@@ -1,7 +1,9 @@
 services:
   web:
-    image: drupal:10-apache
+    build: .
     port: 80
+    ports:
+     - 8080
     resources:
       - db1
 resources:
