@@ -2,7 +2,9 @@ services:
   web:
     domain: ${HOST}
     build: .
-    port: 8080
+    port: 80
+    ports:
+      - 8080
     resources:
       - db1
 balancers:
@@ -10,6 +12,7 @@ balancers:
     service: web
     ports:
       3000: 8080
+      5000: 80
 resources:
   db1:
     type: postgres
