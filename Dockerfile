@@ -5,7 +5,7 @@ FROM drupal:10-apache
 RUN apt-get update && apt-get install -y postgresql-client
 
 # Copy Drupal configuration
-COPY sites /var/www/html/sites
+# COPY sites /var/www/html/sites
 
 # Set environment variables
 ENV POSTGRES_HOST postgres
