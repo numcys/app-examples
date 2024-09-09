@@ -17,4 +17,4 @@ ENV POSTGRES_PASSWORD example
 EXPOSE 80
 
 # Command to run the web server
-CMD ["apache2 ","-k", " start"]
+# CMD ["apache2 ","-k", " start"]
