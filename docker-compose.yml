@@ -1,0 +1,15 @@
+version: '2'
+services:
+  sftp:
+    build: src/
+    labels:
+      - convox.port.22.protocol=tcp
+      - convox.deployment.minimum=0
+      - convox.deployment.maximum=100
+      - convox.health.port=8080
+    environment:
+      - AUTHORIZED_KEYS=
+    ports:
+      - 3000:8080
+      - 8080:8080
+      - 5000:22/tcp
