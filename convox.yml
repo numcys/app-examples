@@ -1,12 +1,30 @@
 services:
   web:
     domain: ${HOST}
-    build: .
+    image: drupal:10-apache
     port: 80
     ports:
       - 8080
     resources:
       - db1
+    volumeOptions:
+      - awsEfs:
+          id: "modules"
+          accessMode: ReadWriteMany
+          mountPath: "/var/www/html/modules"
+      - awsEfs:
+          id: "profiles"
+          accessMode: ReadWriteMany
+          mountPath: "/var/www/html/profiles"
+      - awsEfs:
+          id: "themes"
+          accessMode: ReadWriteMany
+          mountPath: "/var/www/html/themes"
+      - awsEfs:
+          id: "sites"
+          accessMode: ReadWriteMany
+          mountPath: "/var/www/html/sites"
+
 balancers:
   custom:
     service: web
