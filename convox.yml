@@ -2,8 +2,8 @@ environment:
   - NODE_ENV=production
   - PORT=3000
 params:
-  aws-logs:
-    cw-retention: 30
+  awLogs:
+    cwRetention: 30
 services:
   web:
     build: .
