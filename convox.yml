@@ -12,6 +12,43 @@ services:
       memory: 256
     resources:
       - db
+  webc1:
+    build: .
+    command: node app.js
+    port: 3000
+    aws-logs:
+      cw-retention: 30
+    scale:
+      count: 1
+      cpu: 128
+      memory: 256
+    resources:
+      - db
+  webc2:
+    build: .
+    command: node app.js
+    port: 3000
+    aws-logs:
+      cw-retention: 13
+    scale:
+      count: 1
+      cpu: 128
+      memory: 256
+    resources:
+      - db
+  webc3:
+    build: .
+    command: node app.js
+    port: 3000
+    aws-logs:
+      cw-retention: 30
+      disable-retention: true
+    scale:
+      count: 1
+      cpu: 128
+      memory: 256
+    resources:
+      - db
 
 resources:
   db:
