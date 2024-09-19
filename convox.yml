@@ -1,20 +1,20 @@
 environment:
   - NODE_ENV=production
   - PORT=3000
+params:
+  aws-logs:
+    cw-retention: 30
 services:
-  webc1:
+  web:
     build: .
     command: node app.js
     port: 3000
-    aws-logs:
-      cw-retention: 30
     scale:
       count: 1
       cpu: 128
       memory: 256
     resources:
       - db
-
 resources:
   db:
     type: postgres
