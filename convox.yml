@@ -1,22 +1,11 @@
 environment:
   - NODE_ENV=production
   - PORT=3000
-params:
-  awLogs:
-    cwRetention: 30
+app-settings:
+  aws-logs:
+    cw-retention: 30
 services:
   web:
     build: .
     command: node app.js
     port: 3000
-    scale:
-      count: 1
-      cpu: 128
-      memory: 256
-    resources:
-      - db
-resources:
-  db:
-    type: postgres
-    options:
-      version: 13
