@@ -5,8 +5,8 @@ services:
     port: 80
     ports:
       - 8080
-    lifecycle:
-      postStart: "/bin/sh -c 'sleep 10; cp -r /var/www/html/sites//data/; chown www-data:www-data/data/-R'"
+    resources:
+      - db1
     volumeOptions:
       - awsEfs:
           id: "drupal"
