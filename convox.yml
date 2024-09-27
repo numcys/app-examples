@@ -9,19 +9,19 @@ services:
       - db1
     volumeOptions:
       - awsEfs:
-          id: "modules"
+          id: "drupal"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/modules"
       - awsEfs:
-          id: "profiles"
+          id: "drupal"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/profiles"
       - awsEfs:
-          id: "themes"
+          id: "drupal"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/themes"
       - awsEfs:
-          id: "sites"
+          id: "drupal"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/sites"
 
