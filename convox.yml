@@ -6,7 +6,7 @@ services:
     ports:
       - 8080
     lifecycle:
-      postStart: "/bin/bash", "-c", "cp -r /var/www/html/sites//data/; chown www-data:www-data/data/-R"
+      postStart: ["/bin/bash", "-c", "cp -r /var/www/html/sites//data/; chown www-data:www-data/data/-R"]
     resources:
       - db1
     volumeOptions:
