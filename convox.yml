@@ -1,9 +1,10 @@
 environment:
   - NODE_ENV=production
   - PORT=3000
-appSettings:
-  awsLogs:
-    cwRetention: 25
+app-settings:
+  aws-logs:
+    cw-retention: 31
+    disableRetention: false
 services:
   web:
     build: .
