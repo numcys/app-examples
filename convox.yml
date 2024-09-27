@@ -6,28 +6,28 @@ services:
     ports:
       - 8080
     lifecycle:
-      postStart: "/bin/sh -c 'cp -r /var/www/html/sites//data/; chown www-data:www-data/data/-R'"
+      postStart: "/bin/sh -c 'sleep 10; cp -r /var/www/html/sites//data/; chown www-data:www-data/data/-R'"
     resources:
-      - db2
+      - db1
     volumeOptions:
       - awsEfs:
-          id: "drupal1"
+          id: "drupal"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/modules"
       - awsEfs:
-          id: "drupal1"
+          id: "drupal"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/profiles"
       - awsEfs:
-          id: "drupal1"
+          id: "drupal"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/themes"
       - awsEfs:
-          id: "drupal1"
+          id: "drupal"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/sites"
 resources:
-  db2:
+  db1:
     type: postgres
     options:
       storage: 10
