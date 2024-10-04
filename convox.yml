@@ -1,27 +1,35 @@
 services:
   web:
     domain: ${HOST}
-    image: drupal:10-apache
+    image: drupal:10.2.8
     port: 80
-    ports:
-      - 8080
+    health:
+      disable: true
     resources:
       - db1
+    initContainer:
+      image: drupal:10.2.8
+      command: "cp -r /var/www/html/sites/default/ /data/ "
+      volumeOptions:
+        - awsEfs:
+            id: "4"
+            accessMode: ReadWriteMany
+            mountPath: "/data/"
     volumeOptions:
       - awsEfs:
-          id: "drupal"
+          id: "1"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/modules"
       - awsEfs:
-          id: "drupal"
+          id: "2"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/profiles"
       - awsEfs:
-          id: "drupal"
+          id: "3"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/themes"
       - awsEfs:
-          id: "drupal"
+          id: "4"
           accessMode: ReadWriteMany
           mountPath: "/var/www/html/sites"
 resources:

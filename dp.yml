@@ -1,0 +1,38 @@
+--- 
+apiVersion: v1
+kind: Service
+metadata: 
+  name: drupal-service
+spec: 
+  ports: 
+    - 
+      name: http
+      port: 80
+      protocol: TCP
+  selector: 
+    app: drupal
+  type: LoadBalancer
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: drupal
+  name: drupal
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drupal
+  template: 
+    metadata: 
+      labels: 
+        app: drupal
+    spec: 
+      containers: 
+        - 
+          image: 533267189958.dkr.ecr.us-east-1.amazonaws.com/drp/a4:web.BPWUXHPSMFL
+          name: drupal
+          ports: 
+            - 
+              containerPort: 80
