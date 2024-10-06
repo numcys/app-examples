@@ -9,7 +9,7 @@ services:
       - db1
     initContainer:
       image: drupal:10.2.8
-      command: "cp -r /var/www/html/sites/default/ /data/ "
+      command: "bash -c 'cp -r /var/www/html/sites/default/ /data/ && chmod 777 -R /data/'"
       volumeOptions:
         - awsEfs:
             id: "4"
@@ -39,5 +39,3 @@ resources:
       storage: 10
       class: db.t3.large
       version: 16
-
-
