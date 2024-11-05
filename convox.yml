@@ -1,20 +1,26 @@
-environment:
-  - NODE_ENV=production
-  - PORT=3000
-services:
-  web:
-    build: .
-    command: node app.js
-    port: 3000
-    scale:
-      count: 1
-      cpu: 128
-      memory: 256
-    resources:
-      - db
+cms:
+    drpinstance:
+        type: drupal
+        resources:
+            - webdb
+        drupalOptions:
+            domain: drupal.test.demo.com
+            siteName: Drupal from Manifest 
+            adminUsername: convox
+            adminPassword: convox
+            email: admin@gmail.com
+            modules:
+                - drupal/token:^1.15
+                - drupal/honeypot:^2.1
+                - drupal/metatag:^2.0
+            themes:
+                - drupal/bootstrap:^3.32
+        scale:
+            min: 1
+            max: 5
 
 resources:
-  db:
-    type: postgres
-    options:
-      version: 13
+    webdb:
+        type: postgres
+        options:
+            version: 16

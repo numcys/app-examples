@@ -1,0 +1,36 @@
+# version: '3.8'
+# services:
+#   drupal:
+#     image: nconvox/v3rack:drush10
+#     ports:
+#       - "8080:80"
+#     depends_on:
+#       - mysql
+#   mysql:
+#     image: mysql:9
+#     environment:
+#       MYSQL_ROOT_PASSWORD: a998a2353c3f2fac845905c3877ffd
+#       MYSQL_DATABASE: app
+#       MYSQL_USER: app
+#       MYSQL_PASSWORD: a998a2353c3f2fac845905c3877ffd
+# networks:
+#   app-network:
+#     driver: bridge
+
+version: '3.8'
+services:
+  drupal:
+    image: nconvox/v3rack:drush12
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: a998a2353c3f2fac845905c3877ffd
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+networks:
+  app-network:
+    driver: bridge
