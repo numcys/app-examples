@@ -6,15 +6,26 @@ services:
     build: .
     command: node app.js
     port: 3000
+    annotations:
+      - single_line_key: single_line_value
+      - multiline_key: |
+                This is a multi-line value
+                spanning multiple lines.
+      - special_chars_key: '@#$%^&*{}[]|>'
+      - ad.datadoghq.com/test.checks: |
+                {   
+                    "my-test": {
+                    "init_config": {
+                    "is_jmx": true,
+                    "collect_default_metrics": true
+                    },
+                    "instances": [{
+                    "host": "localhost",
+                    "port": "1234"
+                    }]
+                }
+                }
     scale:
       count: 1
       cpu: 128
       memory: 256
-    resources:
-      - db
-
-resources:
-  db:
-    type: postgres
-    options:
-      version: 13
