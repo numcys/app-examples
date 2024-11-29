@@ -7,25 +7,69 @@ services:
     command: node app.js
     port: 3000
     annotations:
-      - single_line_key: single_line_value
-      - multiline_key: |
-                This is a multi-line value
-                spanning multiple lines.
-      - special_chars_key: '@#$%^&*{}[]|>'
-      - ad.datadoghq.com/test.checks: |
-                {   
-                    "my-test": {
-                    "init_config": {
+        - "key1=value1"
+        - key2: "value2"
+        - key3: |
+            this is it
+        - ad.datadoghq.com/test.checks: |
+            {   
+                "my-test": {
+                "init_config": {
                     "is_jmx": true,
                     "collect_default_metrics": true
-                    },
-                    "instances": [{
+                },
+                "instances": [{
                     "host": "localhost",
                     "port": "1234"
-                    }]
-                }
-                }
-    scale:
-      count: 1
-      cpu: 128
-      memory: 256
+                }]
+            }
+            }
+        - "simple.key=value"
+        - another.key: "another value"
+        - multi.line.test: |
+            This is line 1
+            Line 2 with a "quote" and a special character: $
+        - json.annotation: |
+            {"key1": "value1", "key2": "value2"}
+        - nested.json: |
+            {
+            "config": {
+                "feature_enabled": true,
+                "settings": {
+                "retry": 3,
+                "timeout": 120
+                },
+                "targets": ["node1", "node2"]
+            }
+            }
+        - yaml.annotation: |
+            key1: value1
+            key2: value2
+            nested:
+                subkey: subvalue
+        - yaml.config: |
+            feature: true
+            retry: 5
+        - json.config: |
+            {"key": "value", "enabled": false}
+        - large.payload: |
+            {
+            "data": [
+                {"id": 1, "value": "item1"},
+                {"id": 2, "value": "item2"},
+                {"id": 3, "value": "item3"}
+            ],
+            "metadata": {
+                "count": 3,
+                "status": "success"
+            }
+            }
+        - whitespace.test: |
+            Line with trailing space        
+        - "dash-key=value"
+        - "dot.key=value"
+        - encoded.data: "VGhpcyBpcyBhIGJhc2U2NCBlbmNvZGVkIHZhbHVlLg=="
+        - "underscore_key=value"
+        - prometheus.io/path: "/metrics"
+        - nginx.ingress.kubernetes.io/rewrite-target: "/"
+        - prometheus.io/scrape: "Yup cannot verify what is wrong here, but true"
